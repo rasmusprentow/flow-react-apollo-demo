@@ -1,0 +1,8 @@
+query QueryAllFilms {
+  allFilms {
+    films {
+      title
+      director
+    }
+  }
+}
