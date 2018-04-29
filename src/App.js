@@ -1,8 +1,8 @@
 // @flow
 import React, { Component } from "react";
 import "./App.css";
-import Demo from "./MotivationalExample";
-import UsingRecompose from "./hoc/UsingRecompose";
+// import Demo from "./MotivationalExample";
+// import UsingRecompose from "./hoc/UsingRecompose";
 import ViewFilms from "./apollo/ViewFilms";
 
 class App extends Component<any> {

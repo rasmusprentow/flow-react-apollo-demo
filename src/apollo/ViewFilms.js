@@ -15,7 +15,7 @@ const Films = ({data}) => {
     <div>
       <h1>Films</h1>
       {data.allFilms &&
-        data.allFilms.films.map(film => <Film film={film} />)}
+        data.allFilms.films.map(film => <Film key={film.title} film={film} />)}
     </div>
   );
 };

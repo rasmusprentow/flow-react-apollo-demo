@@ -1,6 +1,6 @@
 module.exports = {
   parser: "babel-eslint",
-  extends: ["eslint:recommended", "plugin:react/recommended"],
+  //extends: ["eslint:recommended", "plugin:react/recommended"],
   plugins: ["flowtype"],
   rules: {
     "flowtype/boolean-style": [2, "boolean"],
