@@ -1,5 +1,6 @@
 schema {
   query: Root
+  mutation: RootMutation
 }
 
 # A single film.
@@ -21,11 +22,36 @@ type Film implements Node {
 
   # The ISO 8601 date format of film release at original creator country.
   releaseDate: String
-  speciesConnection(after: String, first: Int, before: String, last: Int): FilmSpeciesConnection
-  starshipConnection(after: String, first: Int, before: String, last: Int): FilmStarshipsConnection
-  vehicleConnection(after: String, first: Int, before: String, last: Int): FilmVehiclesConnection
-  characterConnection(after: String, first: Int, before: String, last: Int): FilmCharactersConnection
-  planetConnection(after: String, first: Int, before: String, last: Int): FilmPlanetsConnection
+  speciesConnection(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): FilmSpeciesConnection
+  starshipConnection(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): FilmStarshipsConnection
+  vehicleConnection(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): FilmVehiclesConnection
+  characterConnection(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): FilmCharactersConnection
+  planetConnection(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): FilmPlanetsConnection
 
   # The ISO 8601 date format of the time that this resource was created.
   created: String
@@ -121,7 +147,7 @@ type FilmsConnection {
   # instead. Note that when clients like Relay need to fetch the "cursor" field on
   # the edge to enable efficient pagination, this shortcut cannot be used, and the
   # full "{ edges { node } }" version should be used instead.
-  films: [Film]
+  films: [Film!]!
 }
 
 # An edge in a connection.
@@ -315,12 +341,27 @@ type Person implements Node {
 
   # A planet that this person was born on or inhabits.
   homeworld: Planet
-  filmConnection(after: String, first: Int, before: String, last: Int): PersonFilmsConnection
+  filmConnection(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): PersonFilmsConnection
 
   # The species that this person belongs to, or null if unknown.
   species: Species
-  starshipConnection(after: String, first: Int, before: String, last: Int): PersonStarshipsConnection
-  vehicleConnection(after: String, first: Int, before: String, last: Int): PersonVehiclesConnection
+  starshipConnection(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): PersonStarshipsConnection
+  vehicleConnection(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): PersonVehiclesConnection
 
   # The ISO 8601 date format of the time that this resource was created.
   created: String
@@ -461,8 +502,18 @@ type Planet implements Node {
   # The percentage of the planet surface that is naturally occuring water or bodies
   # of water.
   surfaceWater: Float
-  residentConnection(after: String, first: Int, before: String, last: Int): PlanetResidentsConnection
-  filmConnection(after: String, first: Int, before: String, last: Int): PlanetFilmsConnection
+  residentConnection(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): PlanetResidentsConnection
+  filmConnection(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): PlanetFilmsConnection
 
   # The ISO 8601 date format of the time that this resource was created.
   created: String
@@ -571,17 +622,47 @@ type PlanetsEdge {
 }
 
 type Root {
-  allFilms(after: String, first: Int, before: String, last: Int): FilmsConnection
+  allFilms(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): FilmsConnection
   film(id: ID, filmID: ID): Film
-  allPeople(after: String, first: Int, before: String, last: Int): PeopleConnection
+  allPeople(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): PeopleConnection
   person(id: ID, personID: ID): Person
-  allPlanets(after: String, first: Int, before: String, last: Int): PlanetsConnection
+  allPlanets(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): PlanetsConnection
   planet(id: ID, planetID: ID): Planet
-  allSpecies(after: String, first: Int, before: String, last: Int): SpeciesConnection
+  allSpecies(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): SpeciesConnection
   species(id: ID, speciesID: ID): Species
-  allStarships(after: String, first: Int, before: String, last: Int): StarshipsConnection
+  allStarships(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): StarshipsConnection
   starship(id: ID, starshipID: ID): Starship
-  allVehicles(after: String, first: Int, before: String, last: Int): VehiclesConnection
+  allVehicles(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): VehiclesConnection
   vehicle(id: ID, vehicleID: ID): Vehicle
 
   # Fetches an object given its ID
@@ -625,8 +706,18 @@ type Species implements Node {
 
   # A planet that this species originates from.
   homeworld: Planet
-  personConnection(after: String, first: Int, before: String, last: Int): SpeciesPeopleConnection
-  filmConnection(after: String, first: Int, before: String, last: Int): SpeciesFilmsConnection
+  personConnection(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): SpeciesPeopleConnection
+  filmConnection(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): SpeciesFilmsConnection
 
   # The ISO 8601 date format of the time that this resource was created.
   created: String
@@ -690,7 +781,7 @@ type SpeciesFilmsConnection {
   # instead. Note that when clients like Relay need to fetch the "cursor" field on
   # the edge to enable efficient pagination, this shortcut cannot be used, and the
   # full "{ edges { node } }" version should be used instead.
-  films: [Film]
+  films: [Film!]
 }
 
 # An edge in a connection.
@@ -782,8 +873,18 @@ type Starship implements Node {
   # The maximum length of time that this starship can provide consumables for its
   # entire crew without having to resupply.
   consumables: String
-  pilotConnection(after: String, first: Int, before: String, last: Int): StarshipPilotsConnection
-  filmConnection(after: String, first: Int, before: String, last: Int): StarshipFilmsConnection
+  pilotConnection(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): StarshipPilotsConnection
+  filmConnection(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): StarshipFilmsConnection
 
   # The ISO 8601 date format of the time that this resource was created.
   created: String
@@ -928,8 +1029,18 @@ type Vehicle implements Node {
   # The maximum length of time that this vehicle can provide consumables for its
   # entire crew without having to resupply.
   consumables: String
-  pilotConnection(after: String, first: Int, before: String, last: Int): VehiclePilotsConnection
-  filmConnection(after: String, first: Int, before: String, last: Int): VehicleFilmsConnection
+  pilotConnection(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): VehiclePilotsConnection
+  filmConnection(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): VehicleFilmsConnection
 
   # The ISO 8601 date format of the time that this resource was created.
   created: String
@@ -1037,3 +1148,6 @@ type VehiclesEdge {
   cursor: String!
 }
 
+type RootMutation {
+  addFilm(title: String!): Film!
+}

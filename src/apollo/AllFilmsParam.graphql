@@ -1,0 +1,8 @@
+query AllFilms($first: Int, $last: Int) {
+  allFilms(first: $first, last: $last) {
+    films {
+      title
+      director
+    }
+  }
+}

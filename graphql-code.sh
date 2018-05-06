@@ -9,7 +9,8 @@ ENDPOINT="http://localhost:53942"
 
 GRAPHQL_FOLDER=.
 
-PATH_TO_INPUT_SCHEMAS='http://localhost:53942'
+PATH_TO_INPUT_SCHEMAS='schema.graphql'
+#PATH_TO_INPUT_SCHEMAS='http://localhost:53942'
 PATH_TO_QUERIES=src/**/*query.graphql
 PATH_TO_MERGED_SCHEMA=${GRAPHQL_FOLDER}/schema.graphql
 PATH_TO_JSON_SCHEMA=${GRAPHQL_FOLDER}/schema.json
@@ -23,7 +24,7 @@ mkdir -p ${GRAPHQL_FOLDER}
 ./node_modules/.bin/apollo-codegen introspect-schema ${PATH_TO_INPUT_SCHEMAS} --output ${PATH_TO_JSON_SCHEMA}
 
 # Generate flow types.
-for file in $(find src -name "*query.graphql"); do
+for file in $(find src -name "*.graphql"); do
   echo ${file}
   ./node_modules/.bin/apollo-codegen generate ${file} \
       --schema ${PATH_TO_JSON_SCHEMA}  \

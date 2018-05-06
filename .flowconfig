@@ -1,12 +1,16 @@
 [ignore]
 
 [include]
+node_modules/react-apollo/index.js.flow
 
 [libs]
+node_modules/react-apollo/*
 
 [lints]
 
 [options]
 suppress_comment=\\(.\\|\n\\)*\\$ExpectError
+module.file_ext=.js
+module.file_ext=.graphql
 
 [strict]
