@@ -23,3 +23,11 @@ To test flow types run
 yarn flow
 ```
 
+
+
+##  Type Generation
+To generate type defs run
+
+```
+sh ./graphql-code.sh
+```
